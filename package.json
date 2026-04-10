@@ -1,5 +1,5 @@
 {
-  "name": "@rmyndharis/antigravity-skills",
+  "name": "@waensaran/antigravity-skills",
   "version": "1.0.0",
   "description": "The Antigravity Skill Vault CLI - Install agent skills to your workspace",
   "bin": {
@@ -26,7 +26,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rmyndharis/antigravity-skills.git"
+    "url": "git+https://github.com/waensaran/antigravity-skills.git"
   },
   "keywords": [
     "antigravity",
@@ -34,12 +34,12 @@
     "agent",
     "skills"
   ],
-  "author": "rmyndharis",
+  "author": "waensaran",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/rmyndharis/antigravity-skills/issues"
+    "url": "https://github.com/waensaran/antigravity-skills/issues"
   },
-  "homepage": "https://github.com/rmyndharis/antigravity-skills#readme",
+  "homepage": "https://github.com/waensaran/antigravity-skills#readme",
   "dependencies": {
     "chalk": "^4.1.2",
     "commander": "^11.1.0",
