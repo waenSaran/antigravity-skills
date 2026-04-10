@@ -1,412 +1,104 @@
 ---
 name: git-advanced-workflows
-description: Master advanced Git workflows including rebasing, cherry-picking, bisect, worktrees, and reflog to maintain clean history and recover from any situation. Use when managing complex Git histories, collaborating on feature branches, or troubleshooting repository issues.
+description: Master advanced Git workflows and automate git operations with ease. Trigger via shortcuts like /commit, /rebase, /cherrypick, /bisect, /worktree, /recover. Use when modifying history, synchronizing complex branches, or recovering mistakes.
 ---
 
 # Git Advanced Workflows
 
-Master advanced Git techniques to maintain clean history, collaborate effectively, and recover from any situation with confidence.
-
-## Do not use this skill when
-
-- The task is unrelated to git advanced workflows
-- You need a different domain or tool outside this scope
-
-## Instructions
-
-- Clarify goals, constraints, and required inputs.
-- Apply relevant best practices and validate outcomes.
-- Provide actionable steps and verification.
-- If detailed examples are required, open `resources/implementation-playbook.md`.
-
-## Use this skill when
-
-- Cleaning up commit history before merging
-- Applying specific commits across branches
-- Finding commits that introduced bugs
-- Working on multiple features simultaneously
-- Recovering from Git mistakes or lost commits
-- Managing complex branch workflows
-- Preparing clean PRs for review
-- Synchronizing diverged branches
-
-## Core Concepts
-
-### 1. Interactive Rebase
-
-Interactive rebase is the Swiss Army knife of Git history editing.
-
-**Common Operations:**
-- `pick`: Keep commit as-is
-- `reword`: Change commit message
-- `edit`: Amend commit content
-- `squash`: Combine with previous commit
-- `fixup`: Like squash but discard message
-- `drop`: Remove commit entirely
-
-**Basic Usage:**
-```bash
-# Rebase last 5 commits
-git rebase -i HEAD~5
-
-# Rebase all commits on current branch
-git rebase -i $(git merge-base HEAD main)
-
-# Rebase onto specific commit
-git rebase -i abc123
-```
-
-### 2. Cherry-Picking
-
-Apply specific commits from one branch to another without merging entire branches.
-
-```bash
-# Cherry-pick single commit
-git cherry-pick abc123
-
-# Cherry-pick range of commits (exclusive start)
-git cherry-pick abc123..def456
-
-# Cherry-pick without committing (stage changes only)
-git cherry-pick -n abc123
-
-# Cherry-pick and edit commit message
-git cherry-pick -e abc123
-```
-
-### 3. Git Bisect
-
-Binary search through commit history to find the commit that introduced a bug.
-
-```bash
-# Start bisect
-git bisect start
-
-# Mark current commit as bad
-git bisect bad
-
-# Mark known good commit
-git bisect good v1.0.0
-
-# Git will checkout middle commit - test it
-# Then mark as good or bad
-git bisect good  # or: git bisect bad
-
-# Continue until bug found
-# When done
-git bisect reset
-```
-
-**Automated Bisect:**
-```bash
-# Use script to test automatically
-git bisect start HEAD v1.0.0
-git bisect run ./test.sh
-
-# test.sh should exit 0 for good, 1-127 (except 125) for bad
-```
-
-### 4. Worktrees
-
-Work on multiple branches simultaneously without stashing or switching.
-
-```bash
-# List existing worktrees
-git worktree list
-
-# Add new worktree for feature branch
-git worktree add ../project-feature feature/new-feature
-
-# Add worktree and create new branch
-git worktree add -b bugfix/urgent ../project-hotfix main
-
-# Remove worktree
-git worktree remove ../project-feature
-
-# Prune stale worktrees
-git worktree prune
-```
-
-### 5. Reflog
-
-Your safety net - tracks all ref movements, even deleted commits.
-
-```bash
-# View reflog
-git reflog
-
-# View reflog for specific branch
-git reflog show feature/branch
-
-# Restore deleted commit
-git reflog
-# Find commit hash
-git checkout abc123
-git branch recovered-branch
-
-# Restore deleted branch
-git reflog
-git branch deleted-branch abc123
-```
-
-## Practical Workflows
-
-### Workflow 1: Clean Up Feature Branch Before PR
-
-```bash
-# Start with feature branch
-git checkout feature/user-auth
-
-# Interactive rebase to clean history
-git rebase -i main
-
-# Example rebase operations:
-# - Squash "fix typo" commits
-# - Reword commit messages for clarity
-# - Reorder commits logically
-# - Drop unnecessary commits
-
-# Force push cleaned branch (safe if no one else is using it)
-git push --force-with-lease origin feature/user-auth
-```
-
-### Workflow 2: Apply Hotfix to Multiple Releases
-
-```bash
-# Create fix on main
-git checkout main
-git commit -m "fix: critical security patch"
-
-# Apply to release branches
-git checkout release/2.0
-git cherry-pick abc123
-
-git checkout release/1.9
-git cherry-pick abc123
-
-# Handle conflicts if they arise
-git cherry-pick --continue
-# or
-git cherry-pick --abort
-```
-
-### Workflow 3: Find Bug Introduction
-
-```bash
-# Start bisect
-git bisect start
-git bisect bad HEAD
-git bisect good v2.1.0
-
-# Git checks out middle commit - run tests
-npm test
-
-# If tests fail
-git bisect bad
-
-# If tests pass
-git bisect good
-
-# Git will automatically checkout next commit to test
-# Repeat until bug found
-
-# Automated version
-git bisect start HEAD v2.1.0
-git bisect run npm test
-```
-
-### Workflow 4: Multi-Branch Development
-
-```bash
-# Main project directory
-cd ~/projects/myapp
-
-# Create worktree for urgent bugfix
-git worktree add ../myapp-hotfix hotfix/critical-bug
-
-# Work on hotfix in separate directory
-cd ../myapp-hotfix
-# Make changes, commit
-git commit -m "fix: resolve critical bug"
-git push origin hotfix/critical-bug
-
-# Return to main work without interruption
-cd ~/projects/myapp
-git fetch origin
-git cherry-pick hotfix/critical-bug
-
-# Clean up when done
-git worktree remove ../myapp-hotfix
-```
-
-### Workflow 5: Recover from Mistakes
-
-```bash
-# Accidentally reset to wrong commit
-git reset --hard HEAD~5  # Oh no!
-
-# Use reflog to find lost commits
-git reflog
-# Output shows:
-# abc123 HEAD@{0}: reset: moving to HEAD~5
-# def456 HEAD@{1}: commit: my important changes
-
-# Recover lost commits
-git reset --hard def456
-
-# Or create branch from lost commit
-git branch recovery def456
-```
-
-## Advanced Techniques
-
-### Rebase vs Merge Strategy
-
-**When to Rebase:**
-- Cleaning up local commits before pushing
-- Keeping feature branch up-to-date with main
-- Creating linear history for easier review
-
-**When to Merge:**
-- Integrating completed features into main
-- Preserving exact history of collaboration
-- Public branches used by others
-
-```bash
-# Update feature branch with main changes (rebase)
-git checkout feature/my-feature
-git fetch origin
-git rebase origin/main
-
-# Handle conflicts
-git status
-# Fix conflicts in files
-git add .
-git rebase --continue
-
-# Or merge instead
-git merge origin/main
-```
-
-### Autosquash Workflow
-
-Automatically squash fixup commits during rebase.
-
-```bash
-# Make initial commit
-git commit -m "feat: add user authentication"
-
-# Later, fix something in that commit
-# Stage changes
-git commit --fixup HEAD  # or specify commit hash
-
-# Make more changes
-git commit --fixup abc123
-
-# Rebase with autosquash
-git rebase -i --autosquash main
-
-# Git automatically marks fixup commits
-```
-
-### Split Commit
-
-Break one commit into multiple logical commits.
-
-```bash
-# Start interactive rebase
-git rebase -i HEAD~3
-
-# Mark commit to split with 'edit'
-# Git will stop at that commit
-
-# Reset commit but keep changes
-git reset HEAD^
-
-# Stage and commit in logical chunks
-git add file1.py
-git commit -m "feat: add validation"
-
-git add file2.py
-git commit -m "feat: add error handling"
-
-# Continue rebase
-git rebase --continue
-```
-
-### Partial Cherry-Pick
-
-Cherry-pick only specific files from a commit.
-
-```bash
-# Show files in commit
-git show --name-only abc123
-
-# Checkout specific files from commit
-git checkout abc123 -- path/to/file1.py path/to/file2.py
-
-# Stage and commit
-git commit -m "cherry-pick: apply specific changes from abc123"
-```
-
-## Best Practices
-
-1. **Always Use --force-with-lease**: Safer than --force, prevents overwriting others' work
-2. **Rebase Only Local Commits**: Don't rebase commits that have been pushed and shared
-3. **Descriptive Commit Messages**: Future you will thank present you
-4. **Atomic Commits**: Each commit should be a single logical change
-5. **Test Before Force Push**: Ensure history rewrite didn't break anything
-6. **Keep Reflog Aware**: Remember reflog is your safety net for 90 days
-7. **Branch Before Risky Operations**: Create backup branch before complex rebases
-
-```bash
-# Safe force push
-git push --force-with-lease origin feature/branch
-
-# Create backup before risky operation
-git branch backup-branch
-git rebase -i main
-# If something goes wrong
-git reset --hard backup-branch
-```
-
-## Common Pitfalls
-
-- **Rebasing Public Branches**: Causes history conflicts for collaborators
-- **Force Pushing Without Lease**: Can overwrite teammate's work
-- **Losing Work in Rebase**: Resolve conflicts carefully, test after rebase
-- **Forgetting Worktree Cleanup**: Orphaned worktrees consume disk space
-- **Not Backing Up Before Experiment**: Always create safety branch
-- **Bisect on Dirty Working Directory**: Commit or stash before bisecting
+Master advanced Git techniques and automate operations directly through your AI assistant. Maintain clean history, collaborate effectively, and recover from mistakes with confidence.
+
+## When to Use This Skill
+- You want to autonomously format and commit your staged changes (`/commit`).
+- Cleaning up commit history before merging (`/rebase`, `/cleanup`).
+- Applying specific commits across branches (`/cherrypick`, `/backport`).
+- Finding commits that introduced bugs (`/bisect`, `/findbug`).
+- Working on multiple features simultaneously in isolated folders (`/worktree`).
+- Recovering from Git mistakes or lost commits (`/recover`, `/reflog`).
+
+## Core Concepts (Quick Reference)
+
+1. **Interactive Rebase (`git rebase -i`)**: The Swiss Army knife of Git history editing. Useful for squashing, rewording, and dropping local commits.
+2. **Cherry-Picking (`git cherry-pick`)**: Apply specific commits from one branch to another without merging entire branches.
+3. **Bisect (`git bisect`)**: Binary search through commit history to find exactly when a bug was introduced.
+4. **Worktrees (`git worktree`)**: Work on multiple branches simultaneously in separate directories without stashing.
+5. **Reflog (`git reflog`)**: The ultimate safety net that tracks all reference movements, even deleted branches/commits.
+
+*(For detailed bash examples, command parameters, and advanced techniques, see `resources/implementation-playbook.md`)*
+
+---
+
+## Actionable Shortcuts (Agent Checklists)
+
+The framework supports automatically executing comprehensive workflows for you via text shortcuts. When you invoke any of these, follow the respective checklist:
+
+### Workflow 1: Smart Commit (`/commit` or "commit changes")
+When triggered, evaluate the current git state and commit the changes according to the standards.
+1. Run `git status` to see what is staged/unstaged. Check `git diff` and `git diff --staged`.
+2. Extract the ticket/issue ID from the branch name using regex `[A-Z]+-\d+` if one exists (e.g., `feature/CORE-550`).
+3. Categorize the change (feat, fix, docs, refactor, chore, etc.) based on the diffs.
+4. Generate the commit message following the exact specifications in `resources/commit-format-reference.md`.
+5. Display the generated commit message to the user.
+6. Run `git add -A` followed by `git commit -m "..."` using the generated message.
+7. Stop. Do NOT push to a remote unless explicitly told to.
+
+### Workflow 2: Interactive Rebase (`/rebase` or `/cleanup`)
+Help the user clean up their branch before a PR.
+1. Confirm the target branch (usually `main`).
+2. Propose actions (e.g., squash "fix typo" commits, reword unclear messages).
+3. Check `git status`. Ensure the working directory is clean.
+4. Execute the interactive rebase, using `--autosquash` if requested.
+5. If conflicts occur, pause and guide the user through resolution.
+6. Validate post-rebase status with `git log --oneline -5`.
+
+### Workflow 3: Cherry-Pick Hotfix (`/cherrypick` or `/backport`)
+Help the user apply a fix to multiple environments.
+1. Get the commit hash for the target change.
+2. Ask the user for the target branch(es) (e.g., `release/v2.1`).
+3. Check out the target branch.
+4. Run `git cherry-pick <hash>`.
+5. Pause for the user to resolve conflicts, or proceed if clean.
+6. Switch back to the original branch when complete.
+
+### Workflow 4: Automated Bisect (`/bisect` or `/findbug`)
+Assist with finding a bug introduction via binary search.
+1. Identify a known "good" commit and a known "bad" commit.
+2. Initiate `git bisect start`, `git bisect bad <bad-commit>`, `git bisect good <good-commit>`.
+3. Inform the user what commit was checked out.
+4. If testing is manual, wait for the user to run their tests and report "good" or "bad", then execute `git bisect good` or `bad`.
+5. Repeat step 4 until the offending commit is isolated.
+6. Run `git bisect reset` when complete.
+
+### Workflow 5: Worktree Sandbox (`/worktree`)
+Spin up a safe environment for a hotfix while keeping the current branch state frozen.
+1. Ask the user for the worktree name and branch type (e.g., `hotfix/urgent-issue`).
+2. Run `git worktree add ../<folder-name> <branch-name>`.
+3. Provide instructions on routing development into that new folder.
+4. Provide instructions on `git worktree remove` when done.
+
+### Workflow 6: Mistake Recovery (`/recover` or `/reflog`)
+Recover a lost branch, commit, or undo a bad reset.
+1. Run `git reflog -n 20` to show recent history.
+2. Analyze the output to identify the likely pre-mistake state.
+3. Propose a recovery command (e.g., `git reset --hard HEAD@{2}` or `git branch recovered-branch <hash>`).
+4. Execute upon confirmation.
+
+---
+
+## Best Practices & Safety
+
+- **Always Use `--force-with-lease`**: When pushing after a rebase, this is safer than `--force`, preventing overwriting others' work.
+- **Rebase Only Local Commits**: Use caution when rebasing commits that have already been pushed and shared.
+- **Keep Reflog Aware**: Reflog is your safety net, but it expires after 90 days.
+- **Branch Before Risky Operations**: Always recommend the user creates a backup branch before complex rebases.
 
 ## Recovery Commands
+- Abort operations: `git rebase --abort`, `git cherry-pick --abort`, `git merge --abort`
+- Restore file from specific commit: `git restore --source=<hash> <file>`
+- Undo last commit but keep changes: `git reset --soft HEAD^`
+- Undo last commit and discard changes: `git reset --hard HEAD^`
 
-```bash
-# Abort operations in progress
-git rebase --abort
-git merge --abort
-git cherry-pick --abort
-git bisect reset
-
-# Restore file to version from specific commit
-git restore --source=abc123 path/to/file
-
-# Undo last commit but keep changes
-git reset --soft HEAD^
-
-# Undo last commit and discard changes
-git reset --hard HEAD^
-
-# Recover deleted branch (within 90 days)
-git reflog
-git branch recovered-branch abc123
-```
+---
 
 ## Resources
-
-- **references/git-rebase-guide.md**: Deep dive into interactive rebase
-- **references/git-conflict-resolution.md**: Advanced conflict resolution strategies
-- **references/git-history-rewriting.md**: Safely rewriting Git history
-- **assets/git-workflow-checklist.md**: Pre-PR cleanup checklist
-- **assets/git-aliases.md**: Useful Git aliases for advanced workflows
-- **scripts/git-clean-branches.sh**: Clean up merged and stale branches
+- **Reference**: [`resources/implementation-playbook.md`](file:///Users/saranya/Desktop/private-repos/antigravity-skills/skills/git-advanced-workflows/resources/implementation-playbook.md) (All detailed command syntaxes and examples)
+- **Reference**: [`resources/commit-format-reference.md`](file:///Users/saranya/Desktop/private-repos/antigravity-skills/skills/git-advanced-workflows/resources/commit-format-reference.md) (Format checks for Smart Commit)
