@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-01-18T08:13:56.813Z",
-  "total": 305,
+  "generatedAt": "2026-04-10T10:40:05.294Z",
+  "total": 318,
   "skills": [
     {
       "id": "accessibility-compliance-accessibility-audit",
@@ -127,6 +127,34 @@
         "orchestrating"
       ],
       "path": "skills/airflow-dag-patterns/SKILL.md"
+    },
+    {
+      "id": "analyze-requirement",
+      "name": "analyze-requirement",
+      "description": "Use this skill to analyze a requirement document and create a technical implementation plan (SA role). When a user says \"analyze requirement\", \"implementation plan from requirement\", \"design solution for\", \"technical analysis\", or references a requirement.md and wants to plan the implementation — activate this skill. It reads the requirement, analyzes the related codebase, designs a technical solution, and produces implementation-plan.md and task.md files. Use this whenever someone has a documented requirement and wants to move from \"what\" to \"how\".",
+      "category": "architecture",
+      "tags": [
+        "agent",
+        "architecture",
+        "sa",
+        "requirement",
+        "system-design"
+      ],
+      "triggers": [
+        "agent",
+        "architecture",
+        "sa",
+        "requirement",
+        "system-design",
+        "analyze",
+        "skill",
+        "document",
+        "technical",
+        "plan",
+        "role",
+        "user"
+      ],
+      "path": "skills/analyze-requirement/SKILL.md"
     },
     {
       "id": "angular-migration",
@@ -722,6 +750,34 @@
       "path": "skills/blockchain-developer/SKILL.md"
     },
     {
+      "id": "brainstorming",
+      "name": "brainstorming",
+      "description": "You MUST use this before any creative work - creating features, building components, adding functionality, or modifying behavior. Explores user intent, requirements and design before implementation.",
+      "category": "workflow",
+      "tags": [
+        "agent",
+        "design",
+        "requirement",
+        "planning",
+        "workflow"
+      ],
+      "triggers": [
+        "agent",
+        "design",
+        "requirement",
+        "planning",
+        "workflow",
+        "brainstorming",
+        "must",
+        "before",
+        "any",
+        "creative",
+        "work",
+        "creating"
+      ],
+      "path": "skills/brainstorming/SKILL.md"
+    },
+    {
       "id": "business-analyst",
       "name": "business-analyst",
       "description": "Master modern business analysis with AI-powered analytics, real-time dashboards, and data-driven insights. Build comprehensive KPI frameworks, predictive models, and strategic recommendations. Use PROACTIVELY for business intelligence or strategic analysis.",
@@ -941,6 +997,34 @@
         "automated"
       ],
       "path": "skills/cicd-automation-workflow-automate/SKILL.md"
+    },
+    {
+      "id": "clarify-requirements",
+      "name": "clarify-requirements",
+      "description": "Use this skill to gather, clarify, and document software requirements (BA role). When a user mentions a new feature, requirement, user story, or says things like \"I need a feature for...\", \"let's define requirements for...\", \"gather requirements\", or describes a business need — activate this skill. It interviews the user systematically, ensures all aspects are covered, and produces a structured requirement.md document. Use this even if the user doesn't explicitly say \"requirements\" — if they're describing what they want built, this skill helps formalize it before jumping into code.",
+      "category": "business",
+      "tags": [
+        "agent",
+        "ba",
+        "requirement",
+        "user-story",
+        "planning"
+      ],
+      "triggers": [
+        "agent",
+        "ba",
+        "requirement",
+        "user-story",
+        "planning",
+        "clarify",
+        "requirements",
+        "skill",
+        "gather",
+        "document",
+        "software",
+        "role"
+      ],
+      "path": "skills/clarify-requirements/SKILL.md"
     },
     {
       "id": "cloud-architect",
@@ -2891,6 +2975,33 @@
       "path": "skills/fastapi-templates/SKILL.md"
     },
     {
+      "id": "find-skills",
+      "name": "find-skills",
+      "description": "Helps users discover and install agent skills when they ask questions like \"how do I do X\", \"find a skill for X\", \"is there a skill that can...\", or express interest in extending capabilities. This skill should be used when the user is looking for functionality that might exist as an installable skill.",
+      "category": "general",
+      "tags": [
+        "agent",
+        "utilities",
+        "discovery",
+        "cli"
+      ],
+      "triggers": [
+        "agent",
+        "utilities",
+        "discovery",
+        "cli",
+        "find",
+        "skills",
+        "helps",
+        "users",
+        "discover",
+        "install",
+        "ask",
+        "questions"
+      ],
+      "path": "skills/find-skills/SKILL.md"
+    },
+    {
       "id": "firmware-analyst",
       "name": "firmware-analyst",
       "description": "Expert firmware analyst specializing in embedded systems, IoT security, and hardware reverse engineering. Masters firmware extraction, analysis, and vulnerability research for routers, IoT devices, automotive systems, and industrial controllers. Use PROACTIVELY for firmware security audits, IoT penetration testing, or embedded systems research.",
@@ -3167,6 +3278,34 @@
         "personal"
       ],
       "path": "skills/gdpr-data-handling/SKILL.md"
+    },
+    {
+      "id": "gh-cli",
+      "name": "gh-cli",
+      "description": "GitHub CLI (gh) comprehensive reference for repositories, issues, pull requests, Actions, projects, releases, gists, codespaces, organizations, extensions, and all GitHub operations from the command line.",
+      "category": "infrastructure",
+      "tags": [
+        "github",
+        "git",
+        "cli",
+        "utilities",
+        "gitops"
+      ],
+      "triggers": [
+        "github",
+        "git",
+        "cli",
+        "utilities",
+        "gitops",
+        "gh",
+        "reference",
+        "repositories",
+        "issues",
+        "pull",
+        "requests",
+        "actions"
+      ],
+      "path": "skills/gh-cli/SKILL.md"
     },
     {
       "id": "git-advanced-workflows",
@@ -4654,6 +4793,35 @@
       "path": "skills/multi-platform-apps-multi-platform/SKILL.md"
     },
     {
+      "id": "nestjs-best-practices",
+      "name": "nestjs-best-practices",
+      "description": "NestJS best practices and architecture patterns for building production-ready applications. This skill should be used when writing, reviewing, or refactoring NestJS code to ensure proper patterns for modules, dependency injection, security, and performance.",
+      "category": "security",
+      "tags": [
+        "nestjs",
+        "typescript",
+        "backend",
+        "framework",
+        "architecture",
+        "architecture-patterns"
+      ],
+      "triggers": [
+        "nestjs",
+        "typescript",
+        "backend",
+        "framework",
+        "architecture",
+        "architecture-patterns",
+        "building",
+        "applications",
+        "skill",
+        "should",
+        "used",
+        "writing"
+      ],
+      "path": "skills/nestjs-best-practices/SKILL.md"
+    },
+    {
       "id": "network-engineer",
       "name": "network-engineer",
       "description": "Expert network engineer specializing in modern cloud networking, security architectures, and performance optimization. Masters multi-cloud connectivity, service mesh, zero-trust networking, SSL/TLS, global load balancing, and advanced troubleshooting. Handles CDN optimization, network automation, and compliance. Use PROACTIVELY for network design, connectivity issues, or performance optimization.",
@@ -4676,6 +4844,35 @@
         "connectivity"
       ],
       "path": "skills/network-engineer/SKILL.md"
+    },
+    {
+      "id": "next-best-practices",
+      "name": "next-best-practices",
+      "description": "Next.js best practices - file conventions, RSC boundaries, data patterns, async APIs, metadata, error handling, route handlers, image/font optimization, bundling",
+      "category": "data-ai",
+      "tags": [
+        "nextjs",
+        "react",
+        "frontend",
+        "framework",
+        "performance",
+        "architecture"
+      ],
+      "triggers": [
+        "nextjs",
+        "react",
+        "frontend",
+        "framework",
+        "performance",
+        "architecture",
+        "next",
+        "js",
+        "file",
+        "conventions",
+        "rsc",
+        "boundaries"
+      ],
+      "path": "skills/next-best-practices/SKILL.md"
     },
     {
       "id": "nextjs-app-router-patterns",
@@ -6378,6 +6575,33 @@
       "path": "skills/similarity-search-patterns/SKILL.md"
     },
     {
+      "id": "skill-creator",
+      "name": "skill-creator",
+      "description": "Create new skills, modify and improve existing skills, and measure skill performance. Use when users want to create a skill from scratch, update or optimize an existing skill, run evals to test a skill, benchmark skill performance with variance analysis, or optimize a skill's description for better triggering accuracy.",
+      "category": "testing",
+      "tags": [
+        "agent",
+        "development",
+        "utilities",
+        "eval"
+      ],
+      "triggers": [
+        "agent",
+        "development",
+        "utilities",
+        "eval",
+        "skill",
+        "creator",
+        "new",
+        "skills",
+        "modify",
+        "improve",
+        "existing",
+        "measure"
+      ],
+      "path": "skills/skill-creator/SKILL.md"
+    },
+    {
       "id": "slo-implementation",
       "name": "slo-implementation",
       "description": "Define and implement Service Level Indicators (SLIs) and Service Level Objectives (SLOs) with error budgets and alerting. Use when establishing reliability targets, implementing SRE practices, or measuring service performance.",
@@ -6707,6 +6931,35 @@
       "path": "skills/stripe-integration/SKILL.md"
     },
     {
+      "id": "supabase-postgres-best-practices",
+      "name": "supabase-postgres-best-practices",
+      "description": "Postgres performance optimization and best practices from Supabase. Use this skill when writing, reviewing, or optimizing Postgres queries, schema designs, or database configurations.",
+      "category": "data-ai",
+      "tags": [
+        "postgresql",
+        "database",
+        "sql",
+        "supabase",
+        "optimization",
+        "backend"
+      ],
+      "triggers": [
+        "postgresql",
+        "database",
+        "sql",
+        "supabase",
+        "optimization",
+        "backend",
+        "postgres",
+        "performance",
+        "skill",
+        "writing",
+        "reviewing",
+        "optimizing"
+      ],
+      "path": "skills/supabase-postgres-best-practices/SKILL.md"
+    },
+    {
       "id": "systems-programming-rust-project",
       "name": "systems-programming-rust-project",
       "description": "You are a Rust project architecture expert specializing in scaffolding production-ready Rust applications. Generate complete project structures with cargo tooling, proper module organization, testing",
@@ -6753,6 +7006,35 @@
         "ui"
       ],
       "path": "skills/tailwind-design-system/SKILL.md"
+    },
+    {
+      "id": "tanstack-start-best-practices",
+      "name": "tanstack-start-best-practices",
+      "description": "TanStack Start best practices for full-stack React applications. Server functions, middleware, SSR, authentication, and deployment patterns. Activate when building full-stack apps with TanStack Start.",
+      "category": "infrastructure",
+      "tags": [
+        "tanstack",
+        "react",
+        "fullstack",
+        "framework",
+        "frontend",
+        "backend"
+      ],
+      "triggers": [
+        "tanstack",
+        "react",
+        "fullstack",
+        "framework",
+        "frontend",
+        "backend",
+        "start",
+        "full",
+        "stack",
+        "applications",
+        "server",
+        "functions"
+      ],
+      "path": "skills/tanstack-start-best-practices/SKILL.md"
     },
     {
       "id": "tdd-orchestrator",
@@ -7436,6 +7718,64 @@
       "path": "skills/vector-index-tuning/SKILL.md"
     },
     {
+      "id": "vercel-react-best-practices",
+      "name": "vercel-react-best-practices",
+      "description": "React and Next.js performance optimization guidelines from Vercel Engineering. This skill should be used when writing, reviewing, or refactoring React/Next.js code to ensure optimal performance patterns. Triggers on tasks involving React components, Next.js pages, data fetching, bundle optimization, or performance improvements.",
+      "category": "data-ai",
+      "tags": [
+        "react",
+        "vercel",
+        "frontend",
+        "performance",
+        "optimization"
+      ],
+      "triggers": [
+        "react",
+        "vercel",
+        "frontend",
+        "performance",
+        "optimization",
+        "next",
+        "js",
+        "guidelines",
+        "engineering",
+        "skill",
+        "should",
+        "used"
+      ],
+      "path": "skills/vercel-react-best-practices/SKILL.md"
+    },
+    {
+      "id": "vercel-react-native-skills",
+      "name": "vercel-react-native-skills",
+      "description": "React Native and Expo best practices for building performant mobile apps. Use when building React Native components, optimizing list performance, implementing animations, or working with native modules. Triggers on tasks involving React Native, Expo, mobile performance, or native platform APIs.",
+      "category": "development",
+      "tags": [
+        "react-native",
+        "mobile",
+        "ios",
+        "android",
+        "vercel",
+        "frontend",
+        "performance"
+      ],
+      "triggers": [
+        "react-native",
+        "mobile",
+        "ios",
+        "android",
+        "vercel",
+        "frontend",
+        "performance",
+        "react",
+        "native",
+        "skills",
+        "expo",
+        "building"
+      ],
+      "path": "skills/vercel-react-native-skills/SKILL.md"
+    },
+    {
       "id": "wcag-audit-patterns",
       "name": "wcag-audit-patterns",
       "description": "Conduct WCAG 2.2 accessibility audits with automated testing, manual verification, and remediation guidance. Use when auditing websites for accessibility, fixing WCAG violations, or implementing accessible design patterns.",
@@ -7483,6 +7823,34 @@
         "mainnet"
       ],
       "path": "skills/web3-testing/SKILL.md"
+    },
+    {
+      "id": "workflow-orchestration",
+      "name": "workflow-orchestration",
+      "description": "Disciplined task execution with planning, verification, and self-improvement loops.\nUse when starting non-trivial tasks (3+ steps), fixing bugs, building features,\nrefactoring code, or when rigorous execution with quality gates is needed.\nIncludes subagent delegation, lessons tracking, and staff-engineer-level verification.",
+      "category": "workflow",
+      "tags": [
+        "agent",
+        "workflow",
+        "planning",
+        "execution",
+        "orchestration"
+      ],
+      "triggers": [
+        "agent",
+        "workflow",
+        "planning",
+        "execution",
+        "orchestration",
+        "disciplined",
+        "task",
+        "verification",
+        "self",
+        "improvement",
+        "loops",
+        "starting"
+      ],
+      "path": "skills/workflow-orchestration/SKILL.md"
     },
     {
       "id": "workflow-orchestration-patterns",

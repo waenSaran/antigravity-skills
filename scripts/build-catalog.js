@@ -87,10 +87,45 @@ const CATEGORY_RULES = [
 
 const BUNDLE_RULES = {
   'core-dev': {
-    description: 'Core development skills across languages, frameworks, and backend/frontend fundamentals.',
-    keywords: [
-      'python', 'javascript', 'typescript', 'go', 'golang', 'rust', 'java', 'node', 'frontend', 'backend',
-      'react', 'fastapi', 'django', 'nextjs', 'api', 'mobile', 'ios', 'android', 'flutter', 'php', 'ruby',
+    description: 'Minimal stack for software development lifecycle: architecture, coding, testing, review, and refactoring.',
+    curated: [
+      // Agile, Requirements & Workflow
+      'brainstorming',
+      'clarify-requirements',
+      'analyze-requirement',
+      'workflow-orchestration',
+      // Architecture & Design
+      'architecture-patterns',
+      'architecture-decision-records',
+      'api-design-principles',
+      'openapi-spec-generation',
+      // Core Dev - Frontend & Backend
+      'frontend-developer',
+      'backend-architect',
+      'backend-development-feature-development',
+      // Quality Assurance
+      'code-reviewer',
+      'e2e-testing-patterns',
+      'unit-testing-test-generate',
+      'tdd-orchestrator',
+      'javascript-testing-patterns',
+      // Refactoring & Tech Debt
+      'code-refactoring-refactor-clean',
+      // Debugging
+      'debugger',
+      'error-debugging-error-trace',
+      // Documentation
+      'code-documentation-doc-generate',
+      'api-documenter',
+      'docs-architect',
+      // Git & Collaboration
+      'git-advanced-workflows',
+      'git-pr-workflows-pr-enhance',
+      'gh-cli',
+      // Performance & Security
+      'application-performance-performance-optimization',
+      'backend-security-coder',
+      'frontend-security-coder',
     ],
   },
   'security-core': {
@@ -240,13 +275,19 @@ function buildBundles(skills) {
   }
 
   for (const [bundleName, rule] of Object.entries(BUNDLE_RULES)) {
-    const bundleSkills = [];
-    const keywords = rule.keywords.map(keyword => keyword.toLowerCase());
+    let bundleSkills = [];
 
-    for (const skill of skills) {
-      const tokenSet = skillTokens.get(skill.id) || new Set();
-      if (keywords.some(keyword => tokenSet.has(keyword))) {
-        bundleSkills.push(skill.id);
+    if (Array.isArray(rule.curated)) {
+      // Curated mode: use the hand-picked list, filtering out any that don't exist
+      bundleSkills = rule.curated.filter(id => skillTokens.has(id));
+    } else {
+      // Keyword mode: match skills by token overlap
+      const keywords = rule.keywords.map(keyword => keyword.toLowerCase());
+      for (const skill of skills) {
+        const tokenSet = skillTokens.get(skill.id) || new Set();
+        if (keywords.some(keyword => tokenSet.has(keyword))) {
+          bundleSkills.push(skill.id);
+        }
       }
     }
 

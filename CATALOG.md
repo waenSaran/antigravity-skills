@@ -1,13 +1,14 @@
 # Skill Catalog
 
-Generated at: 2026-01-18T08:13:56.813Z
+Generated at: 2026-04-10T10:40:05.294Z
 
-Total skills: 305
+Total skills: 318
 
-## architecture (30)
+## architecture (31)
 
 | Skill | Description | Tags | Triggers |
 | --- | --- | --- | --- |
+| `analyze-requirement` | Use this skill to analyze a requirement document and create a technical implementation plan (SA role). When a user says "analyze requirement", "implementatio... | agent, architecture, sa, requirement, system-design | agent, architecture, sa, requirement, system-design, analyze, skill, document, technical, plan, role, user |
 | `architect-review` | Master software architect specializing in modern architecture patterns, clean architecture, microservices, event-driven systems, and DDD. Reviews system desi... |  | architect, review, software, specializing, architecture, clean, microservices, event, driven, ddd, reviews, designs |
 | `architecture-decision-records` | Write and maintain Architecture Decision Records (ADRs) following best practices for technical decision documentation. Use when documenting significant techn... | architecture, decision, records | architecture, decision, records, write, maintain, adrs, following, technical, documentation, documenting, significant, decisions |
 | `binary-analysis-patterns` | Master binary analysis patterns including disassembly, decompilation, control flow analysis, and code pattern recognition. Use when analyzing executables, un... | binary | binary, analysis, including, disassembly, decompilation, control, flow, code, recognition, analyzing, executables, understanding |
@@ -39,10 +40,11 @@ Total skills: 305
 | `workflow-orchestration-patterns` | Design durable workflows with Temporal for distributed systems. Covers workflow vs activity separation, saga patterns, state management, and determinism cons... |  | orchestration, durable, temporal, distributed, covers, vs, activity, separation, saga, state, determinism, constraints |
 | `workflow-patterns` | Use this skill when implementing tasks according to Conductor's TDD workflow, handling phase checkpoints, managing git commits for tasks, or understanding th... |  | skill, implementing, tasks, according, conductor, tdd, handling, phase, checkpoints, managing, git, commits |
 
-## business (23)
+## business (24)
 
 | Skill | Description | Tags | Triggers |
 | --- | --- | --- | --- |
+| `clarify-requirements` | Use this skill to gather, clarify, and document software requirements (BA role). When a user mentions a new feature, requirement, user story, or says things ... | agent, ba, requirement, user-story, planning | agent, ba, requirement, user-story, planning, clarify, requirements, skill, gather, document, software, role |
 | `competitive-landscape` | This skill should be used when the user asks to "analyze competitors", "assess competitive landscape", "identify differentiation", "evaluate market positioni... | competitive, landscape | competitive, landscape, skill, should, used, user, asks, analyze, competitors, assess, identify, differentiation |
 | `conductor-setup` | Initialize project with Conductor artifacts (product definition, tech stack, workflow, style guides) | conductor, setup | conductor, setup, initialize, artifacts, product, definition, tech, stack, style, guides |
 | `context-driven-development` | Use this skill when working with Conductor's context-driven development methodology, managing project context artifacts, or understanding the relationship be... | driven | driven, context, development, skill, working, conductor, methodology, managing, artifacts, understanding, relationship, between |
@@ -67,7 +69,7 @@ Total skills: 305
 | `startup-financial-modeling` | This skill should be used when the user asks to "create financial projections", "build a financial model", "forecast revenue", "calculate burn rate", "estima... | startup, financial, modeling | startup, financial, modeling, skill, should, used, user, asks, projections, model, forecast, revenue |
 | `team-composition-analysis` | This skill should be used when the user asks to "plan team structure", "determine hiring needs", "design org chart", "calculate compensation", "plan equity a... | team, composition | team, composition, analysis, skill, should, used, user, asks, plan, structure, determine, hiring |
 
-## data-ai (38)
+## data-ai (41)
 
 | Skill | Description | Tags | Triggers |
 | --- | --- | --- | --- |
@@ -93,6 +95,7 @@ Total skills: 305
 | `llm-application-dev-langchain-agent` | You are an expert LangChain agent developer specializing in production-grade AI systems using LangChain 0.1+ and LangGraph. | llm, application, dev, langchain, agent | llm, application, dev, langchain, agent, developer, specializing, grade, ai, langgraph |
 | `llm-application-dev-prompt-optimize` | You are an expert prompt engineer specializing in crafting effective prompts for LLMs through advanced techniques including constitutional AI, chain-of-thoug... | llm, application, dev, prompt, optimize | llm, application, dev, prompt, optimize, engineer, specializing, crafting, effective, prompts, llms, through |
 | `llm-evaluation` | Implement comprehensive evaluation strategies for LLM applications using automated metrics, human feedback, and benchmarking. Use when testing LLM performanc... | llm, evaluation | llm, evaluation, applications, automated, metrics, human, feedback, benchmarking, testing, performance, measuring, ai |
+| `next-best-practices` | Next.js best practices - file conventions, RSC boundaries, data patterns, async APIs, metadata, error handling, route handlers, image/font optimization, bund... | nextjs, react, frontend, framework, performance, architecture | nextjs, react, frontend, framework, performance, architecture, next, js, file, conventions, rsc, boundaries |
 | `nextjs-app-router-patterns` | Master Next.js 14+ App Router with Server Components, streaming, parallel routes, and advanced data fetching. Use when building Next.js applications, impleme... | nextjs, app, router | nextjs, app, router, next, js, 14, server, components, streaming, parallel, routes, data |
 | `nodejs-backend-patterns` | Build production-ready Node.js backend services with Express/Fastify, implementing middleware patterns, error handling, authentication, database integration,... | nodejs, backend | nodejs, backend, node, js, express, fastify, implementing, middleware, error, handling, authentication, database |
 | `php-pro` | Write idiomatic PHP code with generators, iterators, SPL data structures, and modern OOP features. Use PROACTIVELY for high-performance PHP applications. | php | php, pro, write, idiomatic, code, generators, iterators, spl, data, structures, oop, features |
@@ -104,13 +107,15 @@ Total skills: 305
 | `similarity-search-patterns` | Implement efficient similarity search with vector databases. Use when building semantic search, implementing nearest neighbor queries, or optimizing retrieva... | similarity, search | similarity, search, efficient, vector, databases, building, semantic, implementing, nearest, neighbor, queries, optimizing |
 | `spark-optimization` | Optimize Apache Spark jobs with partitioning, caching, shuffle optimization, and memory tuning. Use when improving Spark performance, debugging slow jobs, or... | spark, optimization | spark, optimization, optimize, apache, jobs, partitioning, caching, shuffle, memory, tuning, improving, performance |
 | `sql-optimization-patterns` | Master SQL query optimization, indexing strategies, and EXPLAIN analysis to dramatically improve database performance and eliminate slow queries. Use when de... | sql, optimization | sql, optimization, query, indexing, explain, analysis, dramatically, improve, database, performance, eliminate, slow |
+| `supabase-postgres-best-practices` | Postgres performance optimization and best practices from Supabase. Use this skill when writing, reviewing, or optimizing Postgres queries, schema designs, o... | postgresql, database, sql, supabase, optimization, backend | postgresql, database, sql, supabase, optimization, backend, postgres, performance, skill, writing, reviewing, optimizing |
 | `tdd-orchestrator` | Master TDD orchestrator specializing in red-green-refactor discipline, multi-agent workflow coordination, and comprehensive test-driven development practices... | tdd, orchestrator | tdd, orchestrator, specializing, red, green, refactor, discipline, multi, agent, coordination, test, driven |
 | `team-collaboration-standup-notes` | You are an expert team communication specialist focused on async-first standup practices, AI-assisted note generation from commit history, and effective remo... | team, collaboration, standup, notes | team, collaboration, standup, notes, communication, async, first, ai, assisted, note, generation, commit |
 | `unity-ecs-patterns` | Master Unity ECS (Entity Component System) with DOTS, Jobs, and Burst for high-performance game development. Use when building data-oriented games, optimizin... | unity, ecs | unity, ecs, entity, component, dots, jobs, burst, high, performance, game, development, building |
 | `vector-database-engineer` | Expert in vector databases, embedding strategies, and semantic search implementation. Masters Pinecone, Weaviate, Qdrant, Milvus, and pgvector for RAG applic... | vector, database | vector, database, engineer, databases, embedding, semantic, search, masters, pinecone, weaviate, qdrant, milvus |
 | `vector-index-tuning` | Optimize vector index performance for latency, recall, and memory. Use when tuning HNSW parameters, selecting quantization strategies, or scaling vector sear... | vector, index, tuning | vector, index, tuning, optimize, performance, latency, recall, memory, hnsw, parameters, selecting, quantization |
+| `vercel-react-best-practices` | React and Next.js performance optimization guidelines from Vercel Engineering. This skill should be used when writing, reviewing, or refactoring React/Next.j... | react, vercel, frontend, performance, optimization | react, vercel, frontend, performance, optimization, next, js, guidelines, engineering, skill, should, used |
 
-## development (36)
+## development (37)
 
 | Skill | Description | Tags | Triggers |
 | --- | --- | --- | --- |
@@ -150,8 +155,9 @@ Total skills: 305
 | `typescript-advanced-types` | Master TypeScript's advanced type system including generics, conditional types, mapped types, template literals, and utility types for building type-safe app... | typescript, advanced, types | typescript, advanced, types, type, including, generics, conditional, mapped, literals, utility, building, safe |
 | `typescript-pro` | Master TypeScript with advanced types, generics, and strict type safety. Handles complex type systems, decorators, and enterprise-grade patterns. Use PROACTI... | typescript | typescript, pro, types, generics, strict, type, safety, complex, decorators, enterprise, grade, proactively |
 | `uv-package-manager` | Master the uv package manager for fast Python dependency management, virtual environments, and modern Python project workflows. Use when setting up Python pr... | uv, package, manager | uv, package, manager, fast, python, dependency, virtual, environments, setting, up, managing, dependencies |
+| `vercel-react-native-skills` | React Native and Expo best practices for building performant mobile apps. Use when building React Native components, optimizing list performance, implementin... | react-native, mobile, ios, android, vercel, frontend, performance | react-native, mobile, ios, android, vercel, frontend, performance, react, native, skills, expo, building |
 
-## general (35)
+## general (36)
 
 | Skill | Description | Tags | Triggers |
 | --- | --- | --- | --- |
@@ -176,6 +182,7 @@ Total skills: 305
 | `dx-optimizer` | Developer Experience specialist. Improves tooling, setup, and workflows. Use PROACTIVELY when setting up new projects, after team feedback, or when developme... | dx, optimizer | dx, optimizer, developer, experience, improves, tooling, setup, proactively, setting, up, new, after |
 | `error-debugging-multi-agent-review` | Use when working with error debugging multi agent review | error, debugging, multi, agent | error, debugging, multi, agent, review, working |
 | `error-diagnostics-smart-debug` | Use when working with error diagnostics smart debug | error, diagnostics, debug | error, diagnostics, debug, smart, working |
+| `find-skills` | Helps users discover and install agent skills when they ask questions like "how do I do X", "find a skill for X", "is there a skill that can...", or express ... | agent, utilities, discovery, cli | agent, utilities, discovery, cli, find, skills, helps, users, discover, install, ask, questions |
 | `framework-migration-code-migrate` | You are a code migration expert specializing in transitioning codebases between frameworks, languages, versions, and platforms. Generate comprehensive migrat... | framework, migration, code, migrate | framework, migration, code, migrate, specializing, transitioning, codebases, between, frameworks, languages, versions, platforms |
 | `git-advanced-workflows` | Master advanced Git workflows including rebasing, cherry-picking, bisect, worktrees, and reflog to maintain clean history and recover from any situation. Use... | git, advanced | git, advanced, including, rebasing, cherry, picking, bisect, worktrees, reflog, maintain, clean, history |
 | `git-pr-workflows-onboard` | You are an **expert onboarding specialist and knowledge transfer architect** with deep experience in remote-first organizations, technical team integration, ... | git, pr, onboard | git, pr, onboard, onboarding, knowledge, transfer, architect, deep, experience, remote, first, organizations |
@@ -191,7 +198,7 @@ Total skills: 305
 | `tutorial-engineer` | Creates step-by-step tutorials and educational content from code. Transforms complex concepts into progressive learning experiences with hands-on examples. U... | tutorial | tutorial, engineer, creates, step, tutorials, educational, content, code, transforms, complex, concepts, progressive |
 | `ui-ux-designer` | Create interface designs, wireframes, and design systems. Masters user research, accessibility standards, and modern design tools. Specializes in design toke... | ui, ux, designer | ui, ux, designer, interface, designs, wireframes, masters, user, research, accessibility, standards, specializes |
 
-## infrastructure (55)
+## infrastructure (57)
 
 | Skill | Description | Tags | Triggers |
 | --- | --- | --- | --- |
@@ -221,6 +228,7 @@ Total skills: 305
 | `error-diagnostics-error-analysis` | You are an expert error analysis specialist with deep expertise in debugging distributed systems, analyzing production incidents, and implementing comprehens... | error, diagnostics | error, diagnostics, analysis, deep, expertise, debugging, distributed, analyzing, incidents, implementing, observability, solutions |
 | `error-diagnostics-error-trace` | You are an error tracking and observability expert specializing in implementing comprehensive error monitoring solutions. Set up error tracking systems, conf... | error, diagnostics, trace | error, diagnostics, trace, tracking, observability, specializing, implementing, monitoring, solutions, set, up, configure |
 | `flutter-expert` | Master Flutter development with Dart 3, advanced widgets, and multi-platform deployment. Handles state management, animations, testing, and performance optim... | flutter | flutter, development, dart, widgets, multi, platform, deployment, state, animations, testing, performance, optimization |
+| `gh-cli` | GitHub CLI (gh) comprehensive reference for repositories, issues, pull requests, Actions, projects, releases, gists, codespaces, organizations, extensions, a... | github, git, cli, utilities, gitops | github, git, cli, utilities, gitops, gh, reference, repositories, issues, pull, requests, actions |
 | `git-pr-workflows-git-workflow` | Orchestrate a comprehensive git workflow from code review through PR creation, leveraging specialized agents for quality assurance, testing, and deployment r... | git, pr | git, pr, orchestrate, code, review, through, creation, leveraging, specialized, agents, quality, assurance |
 | `github-actions-templates` | Create production-ready GitHub Actions workflows for automated testing, building, and deploying applications. Use when setting up CI/CD with GitHub Actions, ... | github, actions | github, actions, automated, testing, building, deploying, applications, setting, up, ci, cd, automating |
 | `gitlab-ci-patterns` | Build GitLab CI/CD pipelines with multi-stage workflows, caching, and distributed runners for scalable automation. Use when implementing GitLab CI/CD, optimi... | gitlab, ci | gitlab, ci, cd, pipelines, multi, stage, caching, distributed, runners, scalable, automation, implementing |
@@ -246,12 +254,13 @@ Total skills: 305
 | `service-mesh-observability` | Implement comprehensive observability for service meshes including distributed tracing, metrics, and visualization. Use when setting up mesh monitoring, debu... | service, mesh, observability | service, mesh, observability, meshes, including, distributed, tracing, metrics, visualization, setting, up, monitoring |
 | `slo-implementation` | Define and implement Service Level Indicators (SLIs) and Service Level Objectives (SLOs) with error budgets and alerting. Use when establishing reliability t... | slo | slo, define, level, indicators, slis, objectives, slos, error, budgets, alerting, establishing, reliability |
 | `sql-pro` | Master modern SQL with cloud-native databases, OLTP/OLAP optimization, and advanced query techniques. Expert in performance tuning, data modeling, and hybrid... | sql | sql, pro, cloud, native, databases, oltp, olap, optimization, query, techniques, performance, tuning |
+| `tanstack-start-best-practices` | TanStack Start best practices for full-stack React applications. Server functions, middleware, SSR, authentication, and deployment patterns. Activate when bu... | tanstack, react, fullstack, framework, frontend, backend | tanstack, react, fullstack, framework, frontend, backend, start, full, stack, applications, server, functions |
 | `temporal-python-pro` | Master Temporal workflow orchestration with Python SDK. Implements durable workflows, saga patterns, and distributed transactions. Covers async/await, testin... | temporal, python | temporal, python, pro, orchestration, sdk, implements, durable, saga, distributed, transactions, covers, async |
 | `terraform-module-library` | Build reusable Terraform modules for AWS, Azure, and GCP infrastructure following infrastructure-as-code best practices. Use when creating infrastructure mod... | terraform, module, library | terraform, module, library, reusable, modules, aws, azure, gcp, infrastructure, following, code, creating |
 | `test-automator` | Master AI-powered test automation with modern frameworks, self-healing tests, and comprehensive quality engineering. Build scalable testing strategies with a... | automator | automator, test, ai, powered, automation, frameworks, self, healing, tests, quality, engineering, scalable |
 | `unity-developer` | Build Unity games with optimized C# scripts, efficient rendering, and proper asset management. Masters Unity 6 LTS, URP/HDRP pipelines, and cross-platform de... | unity | unity, developer, games, optimized, scripts, efficient, rendering, proper, asset, masters, lts, urp |
 
-## security (62)
+## security (63)
 
 | Skill | Description | Tags | Triggers |
 | --- | --- | --- | --- |
@@ -290,6 +299,7 @@ Total skills: 305
 | `memory-forensics` | Master memory forensics techniques including memory acquisition, process analysis, and artifact extraction using Volatility and related tools. Use when analy... | memory, forensics | memory, forensics, techniques, including, acquisition, process, analysis, artifact, extraction, volatility, related, analyzing |
 | `mobile-security-coder` | Expert in secure mobile coding practices specializing in input validation, WebView security, and mobile-specific security patterns. Use PROACTIVELY for mobil... | mobile, security, coder | mobile, security, coder, secure, coding, specializing, input, validation, webview, specific, proactively, implementations |
 | `mtls-configuration` | Configure mutual TLS (mTLS) for zero-trust service-to-service communication. Use when implementing zero-trust networking, certificate management, or securing... | mtls, configuration | mtls, configuration, configure, mutual, tls, zero, trust, communication, implementing, networking, certificate, securing |
+| `nestjs-best-practices` | NestJS best practices and architecture patterns for building production-ready applications. This skill should be used when writing, reviewing, or refactoring... | nestjs, typescript, backend, framework, architecture, architecture-patterns | nestjs, typescript, backend, framework, architecture, architecture-patterns, building, applications, skill, should, used, writing |
 | `network-engineer` | Expert network engineer specializing in modern cloud networking, security architectures, and performance optimization. Masters multi-cloud connectivity, serv... | network | network, engineer, specializing, cloud, networking, security, architectures, performance, optimization, masters, multi, connectivity |
 | `observability-engineer` | Build production-ready monitoring, logging, and tracing systems. Implements comprehensive observability strategies, SLI/SLO management, and incident response... | observability | observability, engineer, monitoring, logging, tracing, implements, sli, slo, incident, response, proactively, infrastructure |
 | `openapi-spec-generation` | Generate and maintain OpenAPI 3.1 specifications from code, design-first specs, and validation patterns. Use when creating API documentation, generating SDKs... | openapi, spec, generation | openapi, spec, generation, generate, maintain, specifications, code, first, specs, validation, creating, api |
@@ -318,7 +328,7 @@ Total skills: 305
 | `threat-modeling-expert` | Expert in threat modeling methodologies, security architecture review, and risk assessment. Masters STRIDE, PASTA, attack trees, and security requirement ext... | threat, modeling | threat, modeling, methodologies, security, architecture, review, risk, assessment, masters, stride, pasta, attack |
 | `ui-visual-validator` | Rigorous visual validation expert specializing in UI testing, design system compliance, and accessibility verification. Masters screenshot analysis, visual r... | ui, visual, validator | ui, visual, validator, rigorous, validation, specializing, testing, compliance, accessibility, verification, masters, screenshot |
 
-## testing (14)
+## testing (15)
 
 | Skill | Description | Tags | Triggers |
 | --- | --- | --- | --- |
@@ -328,6 +338,7 @@ Total skills: 305
 | `dependency-upgrade` | Manage major dependency version upgrades with compatibility analysis, staged rollout, and comprehensive testing. Use when upgrading framework versions, updat... | dependency, upgrade | dependency, upgrade, major, version, upgrades, compatibility, analysis, staged, rollout, testing, upgrading, framework |
 | `performance-testing-review-multi-agent-review` | Use when working with performance testing review multi agent review | performance, multi, agent | performance, multi, agent, testing, review, working |
 | `screen-reader-testing` | Test web applications with screen readers including VoiceOver, NVDA, and JAWS. Use when validating screen reader compatibility, debugging accessibility issue... | screen, reader | screen, reader, testing, test, web, applications, readers, including, voiceover, nvda, jaws, validating |
+| `skill-creator` | Create new skills, modify and improve existing skills, and measure skill performance. Use when users want to create a skill from scratch, update or optimize ... | agent, development, utilities, eval | agent, development, utilities, eval, skill, creator, new, skills, modify, improve, existing, measure |
 | `startup-analyst` | Expert startup business analyst specializing in market sizing, financial modeling, competitive analysis, and strategic planning for early-stage companies. Us... | startup, analyst | startup, analyst, business, specializing, market, sizing, financial, modeling, competitive, analysis, strategic, planning |
 | `startup-metrics-framework` | This skill should be used when the user asks about "key startup metrics", "SaaS metrics", "CAC and LTV", "unit economics", "burn multiple", "rule of 40", "ma... | startup, metrics, framework | startup, metrics, framework, skill, should, used, user, asks, about, key, saas, cac |
 | `tdd-workflows-tdd-cycle` | Use when working with tdd workflows tdd cycle | tdd, cycle | tdd, cycle, working |
@@ -337,13 +348,14 @@ Total skills: 305
 | `unit-testing-test-generate` | Generate comprehensive, maintainable unit tests across languages with strong coverage and edge case focus. | unit, generate | unit, generate, testing, test, maintainable, tests, languages, strong, coverage, edge, case |
 | `web3-testing` | Test smart contracts comprehensively using Hardhat and Foundry with unit tests, integration tests, and mainnet forking. Use when testing Solidity contracts, ... | web3 | web3, testing, test, smart, contracts, comprehensively, hardhat, foundry, unit, tests, integration, mainnet |
 
-## workflow (12)
+## workflow (14)
 
 | Skill | Description | Tags | Triggers |
 | --- | --- | --- | --- |
 | `agent-orchestration-improve-agent` | Systematic improvement of existing agents through performance analysis, prompt engineering, and continuous iteration. | agent, improve | agent, improve, orchestration, systematic, improvement, existing, agents, through, performance, analysis, prompt, engineering |
 | `agent-orchestration-multi-agent-optimize` | Optimize multi-agent systems with coordinated profiling, workload distribution, and cost-aware orchestration. Use when improving agent performance, throughpu... | agent, multi, optimize | agent, multi, optimize, orchestration, coordinated, profiling, workload, distribution, cost, aware, improving, performance |
 | `billing-automation` | Build automated billing systems for recurring payments, invoicing, subscription lifecycle, and dunning management. Use when implementing subscription billing... | billing | billing, automation, automated, recurring, payments, invoicing, subscription, lifecycle, dunning, implementing, automating, managing |
+| `brainstorming` | You MUST use this before any creative work - creating features, building components, adding functionality, or modifying behavior. Explores user intent, requi... | agent, design, requirement, planning, workflow | agent, design, requirement, planning, workflow, brainstorming, must, before, any, creative, work, creating |
 | `changelog-automation` | Automate changelog generation from commits, PRs, and releases following Keep a Changelog format. Use when setting up release workflows, generating release no... | changelog | changelog, automation, automate, generation, commits, prs, releases, following, keep, format, setting, up |
 | `conductor-manage` | Manage track lifecycle: archive, restore, delete, rename, and cleanup | conductor, manage | conductor, manage, track, lifecycle, archive, restore, delete, rename, cleanup |
 | `conductor-new-track` | Create a new track with specification and phased implementation plan | conductor, new, track | conductor, new, track, specification, phased, plan |
@@ -353,3 +365,5 @@ Total skills: 305
 | `mermaid-expert` | Create Mermaid diagrams for flowcharts, sequences, ERDs, and architectures. Masters syntax for all diagram types and styling. Use PROACTIVELY for visual docu... | mermaid | mermaid, diagrams, flowcharts, sequences, erds, architectures, masters, syntax, all, diagram, types, styling |
 | `team-collaboration-issue` | You are a GitHub issue resolution expert specializing in systematic bug investigation, feature implementation, and collaborative development workflows. Your ... | team, collaboration, issue | team, collaboration, issue, github, resolution, specializing, systematic, bug, investigation, feature, collaborative, development |
 | `track-management` | Use this skill when creating, managing, or working with Conductor tracks - the logical work units for features, bugs, and refactors. Applies to spec.md, plan... | track | track, skill, creating, managing, working, conductor, tracks, logical, work, units, features, bugs |
+| `workflow-orchestration` | Disciplined task execution with planning, verification, and self-improvement loops.
+Use when starting non-trivial tasks (3+ steps), fixing bugs, building fea... | agent, workflow, planning, execution, orchestration | agent, workflow, planning, execution, orchestration, disciplined, task, verification, self, improvement, loops, starting |
