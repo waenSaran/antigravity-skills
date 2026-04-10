@@ -12,22 +12,13 @@ metadata:
   version: '1.0.0'
 ---
 
+
 # React Native Skills
 
 Comprehensive best practices for React Native and Expo applications. Contains
 rules across multiple categories covering performance, animations, UI patterns,
 and platform-specific optimizations.
 
-## When to Apply
-
-Reference these guidelines when:
-
-- Building React Native or Expo apps
-- Optimizing list and scroll performance
-- Implementing animations with Reanimated
-- Working with images and media
-- Configuring native modules or fonts
-- Structuring monorepo projects with native dependencies
 
 ## Rule Categories by Priority
 
@@ -120,3 +111,26 @@ Each rule file contains:
 ## Full Compiled Document
 
 For the complete guide with all rules expanded: `AGENTS.md`
+
+
+## Use this skill when
+
+- Building or optimizing React Native or Expo mobile applications
+- Working with list/scroll performance, animations (Reanimated), or navigation patterns
+- Implementing UI components (images, modals, menus, safe areas) in React Native
+- Configuring fonts, monorepo native dependencies, or design system imports
+- Debugging rendering issues, state management, or React Compiler compatibility in React Native
+
+## Do not use
+
+- For web-only React or Next.js applications — use `vercel-react-best-practices` or `next-best-practices` instead
+- For backend APIs or server-side code — this skill is mobile-focused
+- For Flutter, Swift, or Kotlin native mobile development — this skill is React Native specific
+
+## Instructions
+
+1. Identify the relevant rule category from the priority table (List Performance, Animation, Navigation, UI Patterns, State Management, etc.)
+2. Read the specific rule file from `rules/<prefix>-<rule-name>.md` for detailed explanations and code examples
+3. Apply the correct pattern — each rule shows incorrect code, correct code, and additional context
+4. For comprehensive guidance, reference the full compiled document at `AGENTS.md`
+5. Prioritize CRITICAL rules (List Performance) first — virtualizing lists and memoizing items have the highest impact on mobile UX

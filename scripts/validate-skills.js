@@ -32,6 +32,8 @@ const ALLOWED_FIELDS = new Set([
   'compatibility',
   'metadata',
   'allowed-tools',
+  'tags',
+  'user-invocable',
 ]);
 
 function isPlainObject(value) {

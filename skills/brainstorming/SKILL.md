@@ -163,3 +163,30 @@ A question about a UI topic is not automatically a visual question. "What does p
 
 If they agree to the companion, read the detailed guide before proceeding:
 `skills/brainstorming/visual-companion.md`
+
+
+## Use this skill when
+
+- The user wants to create a new feature, build a component, add functionality, or modify existing behavior
+- The user describes an idea that needs exploration and design before implementation
+- The user says "let's brainstorm", "I have an idea for...", "how should we build...", or "design this feature"
+- Any creative work is about to begin — this skill MUST run before any implementation skill
+
+## Do not use
+
+- When the user has already completed a design and wants to jump straight to coding
+- When the task is a simple bug fix, typo correction, or minor config change
+- When the user explicitly says they don't want a design phase — but even then, confirm first
+- When the user is gathering or documenting requirements — use `clarify-requirements` instead
+
+## Instructions
+
+1. Explore the current project context (files, docs, recent commits) to understand the landscape
+2. Offer the visual companion if upcoming questions will involve visual content (mockups, layouts, diagrams)
+3. Ask clarifying questions one at a time — prefer multiple choice — to understand purpose, constraints, and success criteria
+4. Propose 2-3 approaches with trade-offs and your recommendation
+5. Present the design section by section, getting user approval after each
+6. Write the validated design to `docs/superpowers/specs/YYYY-MM-DD-<topic>-design.md` and commit
+7. Run the spec review loop (dispatch spec-document-reviewer subagent, fix issues, repeat until approved — max 5 iterations)
+8. Ask the user to review the written spec before proceeding
+9. Transition to implementation by invoking the `writing-plans` skill — do NOT invoke any other implementation skill

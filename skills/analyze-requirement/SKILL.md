@@ -237,3 +237,28 @@ After generating both files:
 - **Don't over-engineer** — propose the simplest solution that meets the requirements
 - **Flag risks honestly** — if something is complex or risky, say so
 - **Link back to requirements** — each proposed change should trace back to a requirement
+
+
+## Use this skill when
+
+- The user has a documented requirement (e.g., `requirement.md`) and wants to create a technical implementation plan
+- The user says "analyze requirement", "implementation plan from requirement", "design solution for", or "technical analysis"
+- The user references a requirement file and wants to move from "what to build" to "how to build it"
+- The user needs a Solution Architect (SA) perspective on a feature before coding begins
+
+## Do not use
+
+- When the user is still defining or gathering requirements — use the `clarify-requirements` skill instead
+- When the user wants to brainstorm ideas before formalizing — use the `brainstorming` skill instead
+- When the user wants to directly write code without a plan
+- When the task is a simple bug fix or minor change that doesn't need architectural analysis
+
+## Instructions
+
+1. Locate the requirement document in the project (typically at `docs/feature/<feature-name>/requirement.md`)
+2. Read and fully understand the requirement before proceeding
+3. Analyze the existing codebase — discover architecture, related code, patterns, and assess impact
+4. Design the technical solution with specific file paths, component changes, and migration needs
+5. Generate `implementation-plan.md` using the provided template with proposed changes, verification plan, and risks
+6. Generate `task.md` with actionable, ordered checklist items (each completable in ≤ 2 hours)
+7. Present both files to the user and highlight any open questions or architectural decisions needing input

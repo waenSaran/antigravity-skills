@@ -11,19 +11,11 @@ metadata:
   abstract: Comprehensive Postgres performance optimization guide for developers using Supabase and Postgres. Contains performance rules across 8 categories, prioritized by impact from critical (query performance, connection management) to incremental (advanced features). Each rule includes detailed explanations, incorrect vs. correct SQL examples, query plan analysis, and specific performance metrics to guide automated optimization and code generation.
 ---
 
+
 # Supabase Postgres Best Practices
 
 Comprehensive performance optimization guide for Postgres, maintained by Supabase. Contains rules across 8 categories, prioritized by impact to guide automated query optimization and schema design.
 
-## When to Apply
-
-Reference these guidelines when:
-- Writing SQL queries or designing schemas
-- Implementing indexes or query optimization
-- Reviewing database performance issues
-- Configuring connection pooling or scaling
-- Optimizing for Postgres-specific features
-- Working with Row-Level Security (RLS)
 
 ## Rule Categories by Priority
 
@@ -63,3 +55,26 @@ Each rule file contains:
 - https://wiki.postgresql.org/wiki/Performance_Optimization
 - https://supabase.com/docs/guides/database/overview
 - https://supabase.com/docs/guides/auth/row-level-security
+
+
+## Use this skill when
+
+- Writing SQL queries, designing schemas, or creating indexes for Postgres databases
+- Reviewing or optimizing database performance (slow queries, missing indexes, N+1 patterns)
+- Configuring connection pooling, scaling, or Supabase-specific features
+- Implementing Row-Level Security (RLS) policies or security best practices
+- Working with Supabase projects that use Postgres as the primary database
+
+## Do not use
+
+- For non-Postgres databases (MySQL, MongoDB, DynamoDB) — patterns are database-specific
+- For application-level ORM queries where the framework handles SQL generation — unless optimizing the generated SQL
+- For frontend or client-side code that doesn't directly interact with the database
+
+## Instructions
+
+1. Identify the relevant rule category from the priority table (Query Performance, Connection Management, Security & RLS, Schema Design, etc.)
+2. Read the specific rule file from `references/<prefix>-<rule-name>.md` for detailed SQL examples and EXPLAIN output
+3. Apply the correct pattern — each rule shows incorrect SQL, correct SQL, and performance metrics
+4. Prioritize CRITICAL rules (Query Performance, Connection Management, Security & RLS) when multiple issues exist
+5. For Supabase-specific guidance, check the Supabase-specific notes in each rule file

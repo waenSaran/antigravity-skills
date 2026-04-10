@@ -187,3 +187,28 @@ After generating the file, tell the user:
 - **Use the user's language** — if they describe things in Thai, write the requirement in Thai (but keep headings in English for structure)
 - **kebab-case for feature names** — e.g., `user-authentication`, `payment-gateway`
 - **Don't generate code** — this skill is purely about documenting requirements
+
+
+## Use this skill when
+
+- The user mentions a new feature, requirement, or user story that needs formalization
+- The user says "I need a feature for...", "let's define requirements for...", "gather requirements", or describes a business need
+- The user is describing what they want built but hasn't documented it yet — even if they don't say "requirements"
+- The team needs a structured `requirement.md` before moving to technical implementation
+
+## Do not use
+
+- When the user already has a documented `requirement.md` and wants to create an implementation plan — use `analyze-requirement` instead
+- When the user wants to brainstorm ideas or explore approaches — use `brainstorming` instead
+- When the user wants to write code directly — requirements must be formalized first
+- When the task is a bug fix or minor enhancement with clear scope that doesn't need formal documentation
+
+## Instructions
+
+1. Identify the feature name (kebab-case) and get a brief description of the problem it solves
+2. Interview the user systematically across all categories: background/context, users/stakeholders, functional requirements, non-functional requirements, acceptance criteria, dependencies/constraints, and out-of-scope items
+3. Ask 2-3 questions at a time conversationally — never dump all questions at once
+4. Identify gaps or ambiguities and ask targeted follow-up questions — never assume or fill in gaps yourself
+5. Present a summary of all gathered requirements and confirm with the user before proceeding
+6. Generate `requirement.md` at `<project-directory>/docs/feature/<feature-name>/requirement.md` using the provided template
+7. Inform the user of the file path and remind them they can proceed to the SA phase with `analyze-requirement`

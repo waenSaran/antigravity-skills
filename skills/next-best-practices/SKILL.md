@@ -152,3 +152,27 @@ See [debug-tricks.md](./debug-tricks.md) for:
 - MCP endpoint for AI-assisted debugging
 - Rebuild specific routes with `--debug-build-paths`
 
+
+
+## Use this skill when
+
+- Writing or reviewing Next.js pages, layouts, or components (App Router or Pages Router)
+- Working with React Server Components (RSC), server actions, or the `'use client'`/`'use server'` boundary
+- Implementing data fetching patterns (server-side, client-side, streaming with Suspense)
+- Optimizing images, fonts, scripts, or bundle size in a Next.js application
+- Debugging hydration errors, routing issues, or metadata configuration
+- Deploying or self-hosting a Next.js application
+
+## Do not use
+
+- For plain React applications without Next.js — use `vercel-react-best-practices` instead
+- For React Native or mobile applications — use `vercel-react-native-skills` instead
+- For backend-only NestJS code — use `nestjs-best-practices` instead
+
+## Instructions
+
+1. Identify the relevant topic area (file conventions, RSC boundaries, data patterns, error handling, etc.)
+2. Read the corresponding reference file linked from the main skill document (e.g., `rsc-boundaries.md`, `data-patterns.md`)
+3. Apply the recommended patterns — each reference covers what to do and what to avoid
+4. For Next.js 15+ async API changes, consult `async-patterns.md` for migration guidance
+5. For hydration errors, use `hydration-error.md` to identify the root cause and apply the documented fix

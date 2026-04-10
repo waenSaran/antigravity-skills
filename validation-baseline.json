@@ -1,7 +1,10 @@
 {
-  "generatedAt": "2026-01-18T07:25:55.494Z",
+  "generatedAt": "2026-04-10T14:34:31.600Z",
   "useSection": [],
   "doNotUseSection": [],
   "instructionsSection": [],
-  "longFile": []
+  "longFile": [
+    "gh-cli",
+    "skill-creator"
+  ]
 }

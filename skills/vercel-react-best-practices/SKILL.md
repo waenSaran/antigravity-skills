@@ -8,18 +8,11 @@ metadata:
   version: "1.0.0"
 ---
 
+
 # Vercel React Best Practices
 
 Comprehensive performance optimization guide for React and Next.js applications, maintained by Vercel. Contains 64 rules across 8 categories, prioritized by impact to guide automated refactoring and code generation.
 
-## When to Apply
-
-Reference these guidelines when:
-- Writing new React components or Next.js pages
-- Implementing data fetching (client or server-side)
-- Reviewing code for performance issues
-- Refactoring existing React/Next.js code
-- Optimizing bundle size or load times
 
 ## Rule Categories by Priority
 
@@ -142,3 +135,26 @@ Each rule file contains:
 ## Full Compiled Document
 
 For the complete guide with all rules expanded: `AGENTS.md`
+
+
+## Use this skill when
+
+- Writing new React components or Next.js pages that need performance optimization
+- Reviewing code for data fetching waterfalls, excessive re-renders, or bundle size issues
+- Refactoring React/Next.js applications for better load times and runtime performance
+- Implementing server-side rendering, caching, or streaming patterns
+- Optimizing JavaScript performance (loops, lookups, DOM batching, memoization)
+
+## Do not use
+
+- For React Native or mobile applications — use `vercel-react-native-skills` instead
+- For Next.js-specific patterns (file conventions, routing, metadata) — use `next-best-practices` instead
+- For backend-only code that doesn't involve React components or client-side rendering
+
+## Instructions
+
+1. Identify the relevant rule category from the priority table — start with CRITICAL (Eliminating Waterfalls, Bundle Size) before lower-impact ones
+2. Read the specific rule file from `rules/<prefix>-<rule-name>.md` for detailed explanations and code examples
+3. Apply the correct pattern — each rule shows incorrect code, correct code, and the reasoning behind the change
+4. For the full compiled guide with all 64 rules expanded, reference `AGENTS.md`
+5. When multiple performance issues exist, fix CRITICAL issues first (async waterfalls, barrel imports) as they have the highest impact

@@ -4,20 +4,10 @@ description: Helps users discover and install agent skills when they ask questio
 tags: [agent, utilities, discovery, cli]
 ---
 
+
 # Find Skills
 
 This skill helps you discover and install skills from the open agent skills ecosystem.
-
-## When to Use This Skill
-
-Use this skill when the user:
-
-- Asks "how do I do X" where X might be a common task with an existing skill
-- Says "find a skill for X" or "is there a skill for X"
-- Asks "can you do X" where X is a specialized capability
-- Expresses interest in extending agent capabilities
-- Wants to search for tools, templates, or workflows
-- Mentions they wish they had help with a specific domain (design, testing, deployment, etc.)
 
 ## What is the Skills CLI?
 
@@ -132,3 +122,25 @@ I can still help you with this task directly! Would you like me to proceed?
 If this is something you do often, you could create your own skill:
 npx skills init my-xyz-skill
 ```
+
+
+## Use this skill when
+
+- The user asks "how do I do X" where X might be a common task with an existing installable skill
+- The user says "find a skill for...", "is there a skill that can...", or "can you do X" for a specialized capability
+- The user wants to extend agent capabilities with new tools, templates, or workflows
+- The user mentions wishing they had help with a specific domain (design, testing, deployment, etc.)
+
+## Do not use
+
+- When the user wants to create or modify a skill — use the `skill-creator` skill instead
+- When the user is asking for general coding help that doesn't require a specialized skill
+- When the relevant skill is already installed in the project's `.agent/skills/` directory
+
+## Instructions
+
+1. Understand what the user needs — identify the domain (e.g., React, testing, deployment) and the specific task
+2. Search for skills using `npx skills find [query]` with relevant keywords
+3. Present matching skills to the user with the skill name, description, install command, and link to learn more
+4. If the user wants to proceed, install the skill using `npx skills add <owner/repo@skill> -g -y`
+5. If no relevant skills are found, acknowledge this, offer to help directly, and suggest creating a custom skill with `npx skills init`

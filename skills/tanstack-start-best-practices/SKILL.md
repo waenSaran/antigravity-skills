@@ -4,19 +4,11 @@ description: TanStack Start best practices for full-stack React applications. Se
 tags: [tanstack, react, fullstack, framework, frontend, backend]
 ---
 
+
 # TanStack Start Best Practices
 
 Comprehensive guidelines for implementing TanStack Start patterns in full-stack React applications. These rules cover server functions, middleware, SSR, authentication, and deployment.
 
-## When to Apply
-
-- Creating server functions for data mutations
-- Setting up middleware for auth/logging
-- Configuring SSR and hydration
-- Implementing authentication flows
-- Handling errors across client/server boundary
-- Organizing full-stack code
-- Deploying to various platforms
 
 ## Rule Categories by Priority
 
@@ -108,3 +100,26 @@ Each rule file in the `rules/` directory contains:
 ## Full Reference
 
 See individual rule files in `rules/` directory for detailed guidance and code examples.
+
+
+## Use this skill when
+
+- Building full-stack React applications with TanStack Start
+- Creating server functions for data mutations or implementing middleware for auth/logging
+- Configuring SSR, hydration, or streaming patterns in a TanStack Start project
+- Implementing authentication flows, session management, or route protection with TanStack Start
+- Deploying a TanStack Start application to production
+
+## Do not use
+
+- For Next.js applications — use `next-best-practices` instead
+- For plain React or Vite applications without TanStack Start
+- For backend-only APIs (NestJS, Express) that don't use TanStack Start's server functions
+
+## Instructions
+
+1. Identify the relevant rule category from the priority table (Server Functions, Security, Middleware, Authentication, SSR, etc.)
+2. Read the specific rule file from `rules/<prefix>-<rule-name>.md` for explanations, bad examples, and good examples
+3. Apply the recommended pattern — each rule explains why it matters and when to apply or skip it
+4. For server functions, always validate inputs with schemas (`sf-input-validation`) and handle errors properly (`sf-error-handling`)
+5. For authentication, implement middleware-based route protection (`auth-route-protection`) and verify auth in server functions (`auth-server-functions`)

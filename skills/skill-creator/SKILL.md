@@ -478,3 +478,29 @@ Repeating one more time the core loop here for emphasis:
 Please add steps to your TodoList, if you have such a thing, to make sure you don't forget. If you're in Cowork, please specifically put "Create evals JSON and run `eval-viewer/generate_review.py` so human can review test cases" in your TodoList to make sure it happens.
 
 Good luck!
+
+
+## Use this skill when
+
+- The user wants to create a new agent skill from scratch
+- The user wants to improve, iterate on, or optimize an existing skill
+- The user says "turn this into a skill", "create a skill for...", or "make a skill that..."
+- The user wants to run evaluations or benchmarks to measure skill performance
+- The user wants to optimize a skill's description for better triggering accuracy
+
+## Do not use
+
+- When the user wants to find and install an existing skill — use `find-skills` instead
+- When the user just wants to use an installed skill for a task, not create or modify one
+- When the user needs general coding help that isn't about skill authoring
+
+## Instructions
+
+1. Understand the user's intent — are they creating a new skill, improving an existing one, or optimizing triggering?
+2. For new skills: interview the user to capture intent, edge cases, and expected output format, then draft the SKILL.md
+3. Create 2-3 realistic test prompts and run evaluations (with-skill and baseline) using subagents in parallel
+4. While runs are in progress, draft quantitative assertions for each test case
+5. After runs complete, capture timing data, grade assertions, aggregate benchmarks, and launch the eval viewer
+6. Read user feedback from `feedback.json`, improve the skill, and repeat the loop until the user is satisfied
+7. Optionally run the description optimization loop (`scripts.run_loop`) to improve triggering accuracy
+8. Package the final skill using `scripts.package_skill` if the `present_files` tool is available

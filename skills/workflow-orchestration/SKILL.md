@@ -86,3 +86,28 @@ See [references/task-templates.md](references/task-templates.md) for file templa
 - **Simplicity First**: Make every change as simple as possible
 - **No Laziness**: Find root causes. No temporary fixes. Senior developer standards
 - **Minimal Impact**: Only touch what's necessary. Avoid introducing bugs
+
+
+## Use this skill when
+
+- Starting any non-trivial task with 3+ steps or architectural decisions
+- Fixing bugs that require investigation, root cause analysis, and verification
+- Building features that span multiple files or components
+- Refactoring code where rigorous execution with quality gates is needed
+- The user needs disciplined task tracking with planning, verification, and self-improvement loops
+
+## Do not use
+
+- For simple, single-step tasks (e.g., rename a variable, fix a typo, add a comment)
+- When the user explicitly wants a quick, informal approach without structured planning
+- For pure research or exploration tasks that don't involve code changes
+
+## Instructions
+
+1. Enter plan mode — write a plan to `tasks/todo.md` with checkable items before starting implementation
+2. Verify the plan with the user before beginning work
+3. Offload research, exploration, and parallel analysis to subagents to keep the main context clean
+4. Track progress by marking items complete as you go; explain changes at each step
+5. After any user correction, update `tasks/lessons.md` with the pattern and write rules to prevent recurrence
+6. Before marking any task complete, verify it works — run tests, check logs, diff behavior, and ask "Would a staff engineer approve this?"
+7. For non-trivial changes, pause and ask "Is there a more elegant way?" — but skip this for simple, obvious fixes

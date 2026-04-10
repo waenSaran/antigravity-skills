@@ -2186,3 +2186,25 @@ gh help accessibility
 - GitHub Docs: https://docs.github.com/en/github-cli
 - REST API: https://docs.github.com/en/rest
 - GraphQL API: https://docs.github.com/en/graphql
+
+
+## Use this skill when
+
+- The user needs to perform GitHub operations from the command line (repos, PRs, issues, releases, Actions, secrets)
+- The user asks about `gh` CLI syntax, flags, or available subcommands
+- The user wants to automate GitHub workflows via scripts or CI/CD pipelines
+- The user needs to manage GitHub authentication, tokens, or credential helpers
+
+## Do not use
+
+- When the user is asking about general `git` commands (commit, branch, merge) — those are standard Git, not GitHub CLI
+- When the user needs to interact with GitHub through the web UI or REST API directly
+- When the task involves other Git hosting platforms (GitLab, Bitbucket) that don't use `gh`
+
+## Instructions
+
+1. Identify which `gh` subcommand area the user needs (e.g., `gh pr`, `gh issue`, `gh repo`, `gh run`, `gh release`)
+2. Reference the CLI structure and provide the exact command syntax with relevant flags
+3. Include common options like `--json` for machine-readable output, `--jq` for filtering, and `--web` for browser access
+4. For automation scenarios, prefer non-interactive flags (`--yes`, `--body`, `--title`) over interactive prompts
+5. Suggest `GH_TOKEN` environment variable for CI/CD contexts where interactive auth is not available

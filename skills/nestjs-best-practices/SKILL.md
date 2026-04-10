@@ -8,20 +8,11 @@ metadata:
   version: "1.1.0"
 ---
 
+
 # NestJS Best Practices
 
 Comprehensive best practices guide for NestJS applications. Contains 40 rules across 10 categories, prioritized by impact to guide automated refactoring and code generation.
 
-## When to Apply
-
-Reference these guidelines when:
-
-- Writing new NestJS modules, controllers, or services
-- Implementing authentication and authorization
-- Reviewing code for architecture and security issues
-- Refactoring existing NestJS codebases
-- Optimizing performance or database queries
-- Building microservices architectures
 
 ## Rule Categories by Priority
 
@@ -129,3 +120,26 @@ Each rule file contains:
 ## Full Compiled Document
 
 For the complete guide with all rules expanded: `AGENTS.md`
+
+
+## Use this skill when
+
+- Writing new NestJS modules, controllers, services, or providers
+- Reviewing or refactoring existing NestJS code for architecture, security, or performance issues
+- Implementing authentication, authorization, or input validation in a NestJS application
+- Designing microservices, event-driven, or modular architectures with NestJS
+- Debugging dependency injection issues, circular dependencies, or N+1 query problems
+
+## Do not use
+
+- For non-NestJS Node.js applications (Express, Fastify, Koa) — patterns may differ significantly
+- For frontend React/Vue/Angular code — this skill is backend-focused
+- When the project uses a different backend framework or language entirely
+
+## Instructions
+
+1. Identify the relevant rule category from the priority table (Architecture, DI, Error Handling, Security, Performance, etc.)
+2. Read the specific rule file from `rules/<prefix>-<rule-name>.md` for detailed explanations and code examples
+3. Apply the correct pattern from the rule — each rule shows both incorrect and correct code examples
+4. For comprehensive guidance, reference the full compiled document at `AGENTS.md`
+5. Prioritize CRITICAL rules (Architecture, DI) over lower-impact categories when multiple issues exist
