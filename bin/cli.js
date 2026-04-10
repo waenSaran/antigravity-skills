@@ -206,14 +206,54 @@ program
   .option('-a, --all', 'Install ALL skills')
   .option('-t, --tag <tag>', 'Install skills by tag (repeatable)', collectOption, [])
   .option('-b, --bundle <bundle>', 'Install a curated bundle')
+  .option('-i, --interactive', 'Interactive mode to select tags')
   .action(async (skillName, options) => {
     const targetDir = options.global ? GLOBAL_SKILLS_DIR : LOCAL_SKILLS_DIR;
     const aliases = loadAliases();
     const hasSkillName = typeof skillName === 'string' && skillName.trim().length > 0;
     const bundleName = options.bundle ? options.bundle.toLowerCase().trim() : '';
     const hasBundle = Boolean(bundleName);
-    const hasTags = Array.isArray(options.tag) && options.tag.length > 0;
+    let hasTags = Array.isArray(options.tag) && options.tag.length > 0;
     const hasAll = Boolean(options.all);
+    const isInteractive = Boolean(options.interactive) || (!hasSkillName && !hasAll && !hasBundle && !hasTags);
+
+    if (isInteractive) {
+      const prompts = require('prompts');
+      const catalog = loadCatalog();
+      
+      const tagCount = {};
+      for (const skill of catalog.skills || []) {
+        for (const t of skill.tags || []) {
+          tagCount[t] = (tagCount[t] || 0) + 1;
+        }
+      }
+      
+      const choices = Object.entries(tagCount)
+        .sort((a, b) => b[1] - a[1]) // Sort descending by count
+        .map(([tag, count]) => ({ title: `${tag} (${count})`, value: tag }));
+        
+      if (!choices.length) {
+        console.error(chalk.red('Error: No tags found in catalog for interactive selection.'));
+        process.exit(1);
+      }
+      
+      const response = await prompts({
+        type: 'autocompleteMultiselect',
+        name: 'selectedTags',
+        message: 'Select tags to install (type to search)',
+        choices: choices,
+        instructions: false,
+      });
+      
+      if (!response.selectedTags || response.selectedTags.length === 0) {
+        console.log(chalk.yellow('No tags selected. Installation aborted.'));
+        process.exit(0);
+      }
+      
+      options.tag = (options.tag || []).concat(response.selectedTags);
+      hasTags = true;
+    }
+
     const selectedInputs = [hasSkillName, hasAll, hasBundle, hasTags].filter(Boolean);
 
     if (selectedInputs.length === 0) {
@@ -221,7 +261,7 @@ program
       process.exit(1);
     }
 
-    if (selectedInputs.length > 1) {
+    if (selectedInputs.length > 1 && !isInteractive) {
       console.error(chalk.red('Error: Choose only one of skill name, --all, --tag, or --bundle'));
       process.exit(1);
     }
@@ -479,6 +519,151 @@ program
     if (bundles.common && bundles.common.length) {
       console.log('');
       console.log(`Common skills (curated): ${bundles.common.join(', ')}`);
+    }
+  });
+
+program
+  .command('init')
+  .description('Interactive setup wizard — select bundles and tech stack to install')
+  .option('-g, --global', 'Install to global workspace (~/.gemini/antigravity/skills)')
+  .action(async (options) => {
+    const prompts = require('prompts');
+    const targetDir = options.global ? GLOBAL_SKILLS_DIR : LOCAL_SKILLS_DIR;
+
+    console.log('');
+    console.log(chalk.bold.cyan('🚀 Antigravity Skills — Setup Wizard'));
+    console.log(chalk.gray('   Select bundles and tech stack to install.\n'));
+
+    // Step 1: Bundle selection
+    const bundlesData = loadBundles();
+    const bundleChoices = Object.entries(bundlesData.bundles).map(([name, bundle]) => ({
+      title: `${name} ${chalk.gray(`(${bundle.skills.length} skills)`)} — ${bundle.description}`,
+      value: name,
+    }));
+
+    const bundleResponse = await prompts({
+      type: 'multiselect',
+      name: 'bundles',
+      message: 'Select bundles to include',
+      choices: bundleChoices,
+      hint: '- Space to select, Enter to confirm',
+      instructions: false,
+    });
+
+    if (!bundleResponse.bundles) {
+      console.log(chalk.yellow('\nSetup cancelled.'));
+      process.exit(0);
+    }
+
+    // Step 2: Tech stack tag selection
+    const catalog = loadCatalog();
+    const tagCount = {};
+    for (const skill of catalog.skills || []) {
+      for (const t of skill.tags || []) {
+        tagCount[t] = (tagCount[t] || 0) + 1;
+      }
+    }
+
+    const tagChoices = Object.entries(tagCount)
+      .sort((a, b) => b[1] - a[1])
+      .map(([tag, count]) => ({ title: `${tag} ${chalk.gray(`(${count})`)}`, value: tag }));
+
+    const tagResponse = await prompts({
+      type: 'autocompleteMultiselect',
+      name: 'tags',
+      message: 'Select tech stack tags (type to search, Space to select)',
+      choices: tagChoices,
+      instructions: false,
+    });
+
+    if (!tagResponse.tags) {
+      console.log(chalk.yellow('\nSetup cancelled.'));
+      process.exit(0);
+    }
+
+    // Collect all skill IDs
+    const allSkillIds = new Set();
+
+    // Add skills from selected bundles
+    for (const bundleName of bundleResponse.bundles) {
+      const bundle = bundlesData.bundles[bundleName];
+      if (bundle && bundle.skills) {
+        for (const id of bundle.skills) allSkillIds.add(id);
+      }
+    }
+
+    // Add skills matching selected tags
+    if (tagResponse.tags.length > 0) {
+      const tagSet = new Set(tagResponse.tags);
+      for (const skill of catalog.skills || []) {
+        if ((skill.tags || []).some(tag => tagSet.has(tag))) {
+          allSkillIds.add(skill.id);
+        }
+      }
+    }
+
+    if (allSkillIds.size === 0) {
+      console.log(chalk.yellow('\nNo skills selected. Setup aborted.'));
+      process.exit(0);
+    }
+
+    // Step 3: Summary & confirmation
+    console.log('');
+    console.log(chalk.bold('📋 Installation Summary:'));
+    if (bundleResponse.bundles.length > 0) {
+      console.log(chalk.cyan(`   Bundles: ${bundleResponse.bundles.join(', ')}`));
+    }
+    if (tagResponse.tags.length > 0) {
+      console.log(chalk.cyan(`   Tags:    ${tagResponse.tags.join(', ')}`));
+    }
+    console.log(chalk.bold(`   Total:   ${allSkillIds.size} skills`));
+    console.log(chalk.gray(`   Target:  ${targetDir}`));
+    console.log('');
+
+    const confirmResponse = await prompts({
+      type: 'confirm',
+      name: 'proceed',
+      message: `Install ${allSkillIds.size} skills?`,
+      initial: true,
+    });
+
+    if (!confirmResponse.proceed) {
+      console.log(chalk.yellow('Installation cancelled.'));
+      process.exit(0);
+    }
+
+    // Step 4: Install
+    try {
+      await fs.ensureDir(targetDir);
+      let installed = 0;
+      let skipped = 0;
+
+      for (const skillId of [...allSkillIds].sort()) {
+        const safeSkill = sanitizeSkillId(skillId);
+        if (!safeSkill) { skipped++; continue; }
+
+        const sourcePath = resolveSkillPath(safeSkill);
+        if (!sourcePath || !await fs.pathExists(sourcePath)) {
+          console.warn(chalk.yellow(`⚠ Skill '${safeSkill}' not found in vault. Skipping.`));
+          skipped++;
+          continue;
+        }
+
+        const destPath = path.join(targetDir, safeSkill);
+        await fs.copy(sourcePath, destPath, { overwrite: true });
+        console.log(`${chalk.green('✔')} ${safeSkill}`);
+        installed++;
+      }
+
+      console.log('');
+      console.log(chalk.bold.green(`🎉 Setup complete! Installed ${installed} skills.`));
+      if (skipped > 0) {
+        console.log(chalk.yellow(`   (${skipped} skipped)`));
+      }
+      console.log(chalk.gray('   Restart your agent session to see changes.'));
+    } catch (err) {
+      console.error(chalk.red('Installation failed:'), err.message);
+      process.exit(1);
     }
   });
 
