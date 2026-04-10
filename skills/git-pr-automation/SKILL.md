@@ -1,6 +1,6 @@
 ---
-name: git-pr-workflows-git-workflow
-description: "Orchestrate a comprehensive git workflow from code review through PR creation, leveraging specialized agents for quality assurance, testing, and deployment readiness. This workflow implements modern g"
+name: git-pr-automation
+description: "Orchestrate a comprehensive git workflow from code review through PR creation, delegating specialized atomic tasks to other agents."
 ---
 
 # Complete Git Workflow with Multi-Agent Orchestration
@@ -68,17 +68,11 @@ Orchestrate a comprehensive git workflow from code review through PR creation, l
 
 ## Phase 3: Commit Message Generation
 
-### 1. Change Analysis and Categorization
-- Use Task tool with subagent_type="code-reviewer"
-- Prompt: "Analyze all changes and categorize them according to Conventional Commits specification. Identify the primary change type (feat/fix/docs/style/refactor/perf/test/build/ci/chore/revert) and scope. For changes: [insert file list and summary], determine if this should be a single commit or multiple atomic commits. Consider test results: [insert test summary]."
+### 1. Delegate to Smart Commit
+- Use Task tool with subagent_type="git-advanced-workflows"
+- Prompt: "Trigger the `/commit` workflow to evaluate the current git state and commit the changes according to the standards. Use context from test results [insert test summary] to ensure accurate descriptions."
 - Context from previous: Test results, code review summary
-- Expected output: Commit structure recommendation
-
-### 2. Conventional Commit Message Creation
-- Use Task tool with subagent_type="llm-application-dev::prompt-engineer"
-- Prompt: "Create Conventional Commits format message(s) based on categorization: [insert categorization]. Format: <type>(<scope>): <subject> with blank line then <body> explaining what and why (not how), then <footer> with BREAKING CHANGE: if applicable. Include: 1) Clear subject line (50 chars max), 2) Detailed body explaining rationale, 3) References to issues/tickets, 4) Co-authors if applicable. Consider the impact: [insert breaking changes if any]."
-- Context from previous: Change categorization, breaking changes
-- Expected output: Properly formatted commit message(s)
+- Expected output: Successfully formatted and executed local commit.
 
 ## Phase 4: Branch Strategy and Push Preparation
 
